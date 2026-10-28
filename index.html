@@ -1,0 +1,2814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthy Recipes for a Better You | Personalized Recipe Pack & Quiz</title>
+  <meta name="description" content="Take the free 1-minute healthy eating quiz. Discover recipes tailored to your lifestyle and unlock your special quiz discount.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+
+  <!-- ============================================================
+       ANALYTICS & TRACKING SNIPPETS (PLACEHOLDERS)
+       Uncomment and paste your IDs below when going live.
+  ============================================================ -->
+  <!-- Google Analytics 4 (GA4) Placeholder:
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
+
+  <!-- Meta Pixel Placeholder:
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  -->
+
+  <style>
+    /* ============================================================
+       DESIGN SYSTEM & CSS VARIABLES
+       Palette: Forest Green, Gold, Cream, Sage, Ink, Soft White
+    ============================================================ */
+    :root {
+      --c-primary: #1F4D2B;
+      --c-primary-dark: #15381E;
+      --c-primary-light: #2A663A;
+      --c-accent: #C8962B;
+      --c-accent-hover: #AF8021;
+      --c-accent-soft: #FDF6E8;
+      --c-accent-border: #E8CA89;
+      --c-bg: #FBF8F1;
+      --c-sage: #E8F0E4;
+      --c-sage-light: #F2F7EF;
+      --c-sage-dark: #D4E3CE;
+      --c-text: #2B2B2B;
+      --c-text-muted: #5E675E;
+      --c-text-light: #7E887E;
+      --c-card: #FFFFFF;
+      --c-border: #E5DFD4;
+      --c-border-subtle: #ECE6DB;
+
+      --font-heading: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-pill: 9999px;
+
+      --shadow-sm: 0 2px 8px rgba(31, 77, 43, 0.05);
+      --shadow-md: 0 8px 24px -4px rgba(31, 77, 43, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 16px 38px -6px rgba(31, 77, 43, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+      --shadow-book: 0 22px 40px -12px rgba(18, 44, 25, 0.35), 0 8px 16px -4px rgba(0, 0, 0, 0.15);
+
+      --transition-fast: 180ms ease;
+      --transition-base: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+      --transition-slow: 450ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--c-bg);
+      color: var(--c-text);
+      font-family: var(--font-body);
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Accessibility focus rings */
+    :focus-visible {
+      outline: 3px solid var(--c-accent);
+      outline-offset: 3px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    /* Subtle background herb leaves watermark */
+    .bg-decorations {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+      opacity: 0.45;
+    }
+    .bg-leaf {
+      position: absolute;
+      fill: none;
+      stroke: #D6E4D1;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .bg-leaf-top-right {
+      top: -40px;
+      right: -50px;
+      width: 260px;
+      height: 260px;
+      transform: rotate(25deg);
+    }
+    .bg-leaf-bottom-left {
+      bottom: -60px;
+      left: -60px;
+      width: 300px;
+      height: 300px;
+      transform: rotate(-35deg);
+    }
+
+    /* Screen Reader Only Utility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .container-wide {
+      max-width: 1040px;
+    }
+
+    /* Header & Logo */
+    .site-header {
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--c-border-subtle);
+      background: rgba(251, 248, 241, 0.92);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+    .brand-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      letter-spacing: -0.01em;
+    }
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      color: var(--c-primary);
+      flex-shrink: 0;
+    }
+    .header-trust {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--c-primary-light);
+      background: var(--c-sage);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Funnel Step Wrapper */
+    .funnel-step {
+      display: none;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity var(--transition-base), transform var(--transition-base);
+    }
+    .funnel-step.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       COMPONENTS & TYPOGRAPHY
+    ============================================================ */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.4rem 0.95rem;
+      border-radius: var(--radius-pill);
+    }
+    .badge-gold {
+      background: var(--c-accent-soft);
+      color: #8C6415;
+      border: 1px solid var(--c-accent-border);
+    }
+    .badge-sage {
+      background: var(--c-sage);
+      color: var(--c-primary);
+      border: 1px solid var(--c-sage-dark);
+    }
+    .badge-discount {
+      background: #EAF5ED;
+      color: var(--c-primary);
+      border: 1px solid #B8DCBE;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-heading);
+      color: var(--c-primary-dark);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    .headline-main {
+      font-size: 2rem;
+      margin-top: 1rem;
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.02em;
+    }
+    .subhead-main {
+      font-size: 1.05rem;
+      color: var(--c-text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 1.05rem 1.75rem;
+      border-radius: var(--radius-pill);
+      transition: all var(--transition-fast);
+      text-align: center;
+      user-select: none;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #DBA736 0%, #C8962B 50%, #B8851E 100%);
+      color: #1A1A1A;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #E5B344 0%, #D4A134 50%, #C59227 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px -4px rgba(200, 150, 43, 0.4);
+    }
+    .btn-gold:active {
+      transform: translateY(1px);
+    }
+    .btn-pulse {
+      animation: ctaPulse 2.8s infinite ease-in-out;
+    }
+    @keyframes ctaPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(200, 150, 43, 0.45);
+      }
+      70% {
+        box-shadow: 0 0 0 16px rgba(200, 150, 43, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(200, 150, 43, 0);
+      }
+    }
+
+    .btn-secondary {
+      background: var(--c-card);
+      color: var(--c-primary);
+      border: 1.5px solid var(--c-border);
+      padding: 0.6rem 1.1rem;
+      font-size: 0.9rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-secondary:hover {
+      border-color: var(--c-primary);
+      background: var(--c-sage-light);
+    }
+
+    /* Cards */
+    .card {
+      background: var(--c-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--c-border);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ============================================================
+       STEP 1: WELCOME SCREEN
+    ============================================================ */
+    .welcome-hero {
+      text-align: center;
+      padding: 1rem 0 2rem;
+    }
+    .welcome-book-wrap {
+      max-width: 280px;
+      margin: 1.5rem auto 1.75rem;
+      position: relative;
+    }
+    .hero-book-img {
+      border-radius: 12px;
+      box-shadow: var(--shadow-book);
+      width: 100%;
+      height: auto;
+      transform: perspective(900px) rotateY(-5deg) rotateX(2deg);
+      transition: transform var(--transition-slow);
+    }
+    .welcome-book-wrap:hover .hero-book-img {
+      transform: perspective(900px) rotateY(0deg) rotateX(0deg) scale(1.02);
+    }
+    .welcome-cta-wrap {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .welcome-note {
+      font-size: 0.85rem;
+      color: var(--c-text-light);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .welcome-perks {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+    .welcome-perk-item {
+      background: var(--c-sage-light);
+      border: 1px solid var(--c-sage-dark);
+      padding: 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      color: var(--c-text);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .welcome-perk-icon {
+      width: 22px;
+      height: 22px;
+      color: var(--c-primary);
+    }
+
+    /* ============================================================
+       STEP 2: QUIZ SCREEN
+    ============================================================ */
+    .quiz-header {
+      margin-bottom: 1.5rem;
+    }
+    .quiz-nav-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+    .quiz-counter {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .progress-bar-track {
+      width: 100%;
+      height: 8px;
+      background: var(--c-border-subtle);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      position: relative;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 14%;
+      background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-accent) 100%);
+      border-radius: var(--radius-pill);
+      transition: width var(--transition-base);
+    }
+
+    .question-card {
+      background: var(--c-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--c-border);
+      padding: 1.75rem 1.25rem;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 1.5rem;
+    }
+    .question-title {
+      font-size: 1.45rem;
+      margin-bottom: 1.35rem;
+      color: var(--c-primary-dark);
+      text-align: center;
+    }
+    .answers-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .answer-card {
+      width: 100%;
+      text-align: left;
+      background: var(--c-bg);
+      border: 2px solid var(--c-border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--c-text);
+      transition: all var(--transition-fast);
+      position: relative;
+      cursor: pointer;
+    }
+    .answer-card:hover {
+      border-color: var(--c-primary-light);
+      background: var(--c-sage-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .answer-card:active {
+      transform: scale(0.99);
+    }
+    .answer-card.selected {
+      border-color: var(--c-primary);
+      background: #F1F7EE;
+      color: var(--c-primary-dark);
+      box-shadow: 0 0 0 2px var(--c-primary);
+    }
+    .answer-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--c-primary);
+      transition: background var(--transition-fast);
+    }
+    .answer-card.selected .answer-icon-box {
+      background: var(--c-primary);
+      color: #FFFFFF;
+      border-color: var(--c-primary);
+    }
+    .answer-text-wrap {
+      flex: 1;
+    }
+    .answer-label {
+      display: block;
+      line-height: 1.35;
+    }
+    .answer-check {
+      width: 24px;
+      height: 24px;
+      border-radius: var(--radius-pill);
+      border: 2px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+      background: var(--c-card);
+    }
+    .answer-check-icon {
+      width: 14px;
+      height: 14px;
+      color: #FFFFFF;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all var(--transition-fast);
+    }
+    .answer-card.selected .answer-check {
+      background: var(--c-primary);
+      border-color: var(--c-primary);
+    }
+    .answer-card.selected .answer-check-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ============================================================
+       STEP 3: ANALYZING SCREEN
+    ============================================================ */
+    .analyzing-box {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--c-card);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--c-border);
+      box-shadow: var(--shadow-lg);
+      max-width: 520px;
+      margin: 2rem auto;
+    }
+    .spinner-ring-wrap {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 2rem;
+    }
+    .ring-svg {
+      width: 130px;
+      height: 130px;
+      transform: rotate(-90deg);
+    }
+    .ring-bg {
+      fill: none;
+      stroke: var(--c-sage);
+      stroke-width: 8;
+    }
+    .ring-val {
+      fill: none;
+      stroke: var(--c-primary);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 345.5;
+      stroke-dashoffset: 345.5;
+      transition: stroke-dashoffset 3.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .spinner-percent {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      font-family: var(--font-heading);
+    }
+    .analyzing-status-title {
+      font-size: 1.35rem;
+      margin-bottom: 0.65rem;
+      color: var(--c-primary-dark);
+      min-height: 2.2rem;
+      transition: opacity var(--transition-fast);
+    }
+    .analyzing-sub {
+      font-size: 0.95rem;
+      color: var(--c-text-muted);
+    }
+
+    /* ============================================================
+       STEP 4: RESULT + OFFER LONG-SCROLL SALES PAGE
+    ============================================================ */
+    .result-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding-bottom: 5rem;
+    }
+
+    /* Section A: Result Header */
+    .result-hero-card {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5FAF3 100%);
+      border: 1.5px solid #CFE2CD;
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+    .result-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-accent) 100%);
+    }
+    .profile-title {
+      font-size: 2.15rem;
+      margin: 0.85rem 0 0.65rem;
+      color: var(--c-primary-dark);
+    }
+    .profile-desc {
+      font-size: 1.05rem;
+      color: var(--c-text-muted);
+      max-width: 620px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+    .match-bar-container {
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 1rem;
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .match-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .match-track {
+      flex: 1;
+      height: 10px;
+      background: var(--c-sage);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+    }
+    .match-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--c-primary) 0%, var(--c-accent) 100%);
+      border-radius: var(--radius-pill);
+      transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .match-percentage {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--c-accent-hover);
+    }
+
+    /* Section B: Personalized Recommendations */
+    .recommendations-box {
+      margin-bottom: 2rem;
+    }
+    .section-title {
+      font-size: 1.65rem;
+      color: var(--c-primary-dark);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--c-text-muted);
+      text-align: center;
+      margin-bottom: 1.35rem;
+    }
+    .rec-cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .rec-card {
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      border-left: 5px solid var(--c-accent);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .rec-card-num {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-pill);
+      background: var(--c-accent-soft);
+      color: #8C6415;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+    .rec-card-content h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+      color: var(--c-primary);
+    }
+    .rec-card-content p {
+      font-size: 0.9rem;
+      color: var(--c-text-muted);
+      line-height: 1.45;
+    }
+
+    /* Section C: Offer Card (Sticky/Prominent) */
+    .hero-offer-card {
+      background: var(--c-card);
+      border: 2px solid var(--c-accent-border);
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .offer-badge-ribbon {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--c-accent);
+      color: #171717;
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.4rem 1.25rem;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 4px 12px rgba(200, 150, 43, 0.35);
+      white-space: nowrap;
+    }
+    .offer-grid-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      align-items: center;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+    .offer-cover-col {
+      max-width: 260px;
+      width: 100%;
+    }
+    .offer-book-img {
+      border-radius: 12px;
+      box-shadow: var(--shadow-book);
+      width: 100%;
+      height: auto;
+    }
+    .offer-details-col {
+      width: 100%;
+    }
+    .offer-book-title {
+      font-size: 1.85rem;
+      color: var(--c-primary-dark);
+      margin-bottom: 0.35rem;
+    }
+    .offer-book-tagline {
+      font-size: 1rem;
+      color: var(--c-text-muted);
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+    .price-box {
+      background: var(--c-sage-light);
+      border: 1px solid var(--c-sage-dark);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+    .price-regular-wrap {
+      text-align: left;
+    }
+    .price-regular-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--c-text-light);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .price-regular {
+      font-size: 1.25rem;
+      color: var(--c-text-light);
+      text-decoration: line-through;
+      font-weight: 600;
+    }
+    .price-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--c-border);
+    }
+    .price-special-wrap {
+      text-align: left;
+    }
+    .price-special-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .price-special {
+      font-size: 2.35rem;
+      color: var(--c-primary-dark);
+      font-weight: 800;
+      font-family: var(--font-heading);
+      line-height: 1;
+    }
+
+    .offer-features-list {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .offer-feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.95rem;
+      color: var(--c-text);
+      line-height: 1.4;
+    }
+    .feat-check-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--c-primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+      width: 100%;
+    }
+    .cta-button-full {
+      width: 100%;
+      max-width: 440px;
+      font-size: 1.15rem;
+      padding: 1.15rem 1.5rem;
+    }
+    .cta-trust-note {
+      font-size: 0.8rem;
+      color: var(--c-text-light);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Section D: What's Inside Grid */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+    }
+    .spec-card {
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .spec-card-icon {
+      width: 32px;
+      height: 32px;
+      color: var(--c-primary);
+      margin: 0 auto 0.5rem;
+    }
+    .spec-card-val {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--c-primary-dark);
+      font-family: var(--font-heading);
+      margin-bottom: 0.2rem;
+    }
+    .spec-card-desc {
+      font-size: 0.82rem;
+      color: var(--c-text-muted);
+    }
+
+    .chapters-card {
+      background: var(--c-sage-light);
+      border: 1px solid var(--c-sage-dark);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .chapters-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--c-primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .chapters-pill-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 0.5rem;
+    }
+    .chapter-pill {
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--c-text);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .chapter-pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-pill);
+      background: var(--c-accent);
+    }
+
+    /* Section E: Sample Recipe Preview */
+    .sample-preview-box {
+      margin-bottom: 2.5rem;
+    }
+    .recipe-mockup-card {
+      background: #FFFFFF;
+      border: 2px solid var(--c-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .recipe-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      background: var(--c-sage);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      margin-bottom: 0.65rem;
+    }
+    .recipe-title {
+      font-size: 1.45rem;
+      color: var(--c-primary-dark);
+      margin-bottom: 0.75rem;
+    }
+    .recipe-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding-bottom: 0.85rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--c-border-subtle);
+      font-size: 0.85rem;
+      color: var(--c-text-muted);
+      flex-wrap: wrap;
+    }
+    .recipe-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .recipe-meta-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--c-primary);
+    }
+    .recipe-columns {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .recipe-ing-box h5, .recipe-method-box h5 {
+      font-size: 0.95rem;
+      color: var(--c-primary);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .recipe-ing-list {
+      list-style: none;
+      font-size: 0.88rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      color: var(--c-text);
+    }
+    .recipe-ing-list li::before {
+      content: "•";
+      color: var(--c-accent);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    .recipe-ing-list {
+      padding-left: 1em;
+    }
+    .recipe-steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--c-text);
+    }
+    .recipe-steps-list li {
+      display: flex;
+      gap: 0.65rem;
+      line-height: 1.45;
+    }
+    .step-idx {
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-pill);
+      background: var(--c-sage);
+      color: var(--c-primary);
+      font-weight: 700;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Section F: Why You'll Love It */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .benefit-item-card {
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .benefit-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: var(--c-sage);
+      color: var(--c-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .benefit-item-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: var(--c-primary-dark);
+    }
+    .benefit-item-card p {
+      font-size: 0.88rem;
+      color: var(--c-text-muted);
+      line-height: 1.45;
+    }
+
+    /* Section G: Guarantee Block (Configurable) */
+    .guarantee-card {
+      background: #F4FAF2;
+      border: 1.5px solid #C1DFBD;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .guarantee-icon {
+      width: 42px;
+      height: 42px;
+      color: var(--c-primary);
+      margin: 0 auto 0.75rem;
+    }
+    .guarantee-card h4 {
+      font-size: 1.25rem;
+      color: var(--c-primary-dark);
+      margin-bottom: 0.45rem;
+    }
+    .guarantee-card p {
+      font-size: 0.9rem;
+      color: var(--c-text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* Section H: FAQ Accordion */
+    .faq-section {
+      margin-bottom: 2.5rem;
+    }
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    .faq-item {
+      background: var(--c-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-fast);
+    }
+    .faq-item:hover {
+      border-color: var(--c-primary-light);
+    }
+    .faq-question-btn {
+      width: 100%;
+      text-align: left;
+      padding: 1.1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--c-primary-dark);
+      cursor: pointer;
+    }
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--c-text-light);
+      transition: transform var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      color: var(--c-primary);
+    }
+    .faq-answer-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--transition-base), padding var(--transition-base);
+      background: #FAFCF9;
+      font-size: 0.92rem;
+      color: var(--c-text-muted);
+      line-height: 1.55;
+    }
+    .faq-item.open .faq-answer-panel {
+      max-height: 300px;
+      padding: 0 1.25rem 1.15rem;
+      border-top: 1px solid var(--c-border-subtle);
+    }
+
+    /* Section I: Final CTA Box */
+    .final-cta-card {
+      background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-dark) 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 1.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .final-cta-card h3 {
+      color: #FFFFFF;
+      font-size: 1.85rem;
+      margin-bottom: 0.5rem;
+    }
+    .final-cta-card p {
+      color: #DDE8DC;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .final-price-tag {
+      font-size: 1.25rem;
+      color: var(--c-accent);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Section J: Footer */
+    .site-footer {
+      border-top: 1px solid var(--c-border);
+      padding: 2rem 1.25rem 5rem;
+      text-align: center;
+      background: #F4EFE6;
+      font-size: 0.82rem;
+      color: var(--c-text-light);
+    }
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--c-primary);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--c-text-muted);
+    }
+    .footer-links a:hover {
+      color: var(--c-primary);
+      text-decoration: underline;
+    }
+    .footer-disclaimer {
+      max-width: 620px;
+      margin: 0 auto 1rem;
+      line-height: 1.5;
+    }
+
+    /* Section K: Mobile Sticky Bottom CTA Bar */
+    .sticky-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--c-border);
+      padding: 0.75rem 1rem;
+      z-index: 50;
+      box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transform: translateY(110%);
+      transition: transform var(--transition-base);
+    }
+    .sticky-bottom-bar.visible {
+      transform: translateY(0);
+    }
+    .sticky-price-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .sticky-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--c-primary);
+      text-transform: uppercase;
+    }
+    .sticky-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.35rem;
+    }
+    .sticky-old-price {
+      font-size: 0.85rem;
+      color: var(--c-text-light);
+      text-decoration: line-through;
+    }
+    .sticky-new-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--c-primary-dark);
+      font-family: var(--font-heading);
+      line-height: 1;
+    }
+    .sticky-cta-btn {
+      padding: 0.75rem 1.4rem;
+      font-size: 0.92rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ============================================================
+       RESPONSIVE BREAKPOINTS (Desktop >= 680px)
+    ============================================================ */
+    @media (min-width: 680px) {
+      .headline-main {
+        font-size: 2.75rem;
+      }
+      .subhead-main {
+        font-size: 1.15rem;
+      }
+      .welcome-hero {
+        padding: 2rem 0 3rem;
+      }
+      .welcome-book-wrap {
+        max-width: 320px;
+      }
+      .question-card {
+        padding: 2.5rem 2rem;
+      }
+      .question-title {
+        font-size: 1.75rem;
+      }
+      .offer-grid-layout {
+        flex-direction: row;
+        text-align: left;
+        gap: 2.25rem;
+        align-items: flex-start;
+      }
+      .offer-cover-col {
+        max-width: 280px;
+        flex-shrink: 0;
+      }
+      .offer-details-col {
+        flex: 1;
+      }
+      .price-box {
+        justify-content: flex-start;
+      }
+      .cta-container {
+        align-items: flex-start;
+      }
+      .specs-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .chapters-pill-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .recipe-columns {
+        grid-template-columns: 1fr 1.3fr;
+      }
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .sticky-bottom-bar {
+        display: none !important; /* Mobile-first, desktop uses prominent in-flow CTAs */
+      }
+      .site-footer {
+        padding-bottom: 2.5rem;
+      }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Decorative Foliage (Clean SVG Watermarks) -->
+  <div class="bg-decorations" aria-hidden="true">
+    <svg class="bg-leaf bg-leaf-top-right" viewBox="0 0 100 100">
+      <path d="M10,90 Q30,40 85,15 Q60,70 10,90 Z" />
+      <path d="M10,90 Q45,55 85,15" />
+      <path d="M35,65 Q50,60 55,50" />
+      <path d="M50,50 Q65,45 70,35" />
+    </svg>
+    <svg class="bg-leaf bg-leaf-bottom-left" viewBox="0 0 100 100">
+      <path d="M90,10 Q70,60 15,85 Q40,30 90,10 Z" />
+      <path d="M90,10 Q55,45 15,85" />
+      <path d="M65,35 Q50,40 45,50" />
+    </svg>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="brand-mark">
+      <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+      </svg>
+      <span id="headerBrandTitle">Healthy Recipes</span>
+    </div>
+    <div class="header-trust">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <span id="headerBadgeText">Digital Cookbook</span>
+    </div>
+  </header>
+
+  <!-- Live Announcer for Screen Readers -->
+  <div id="srAnnouncer" class="sr-only" aria-live="polite"></div>
+
+  <main>
+    <!-- ============================================================
+         STEP 1: WELCOME SCREEN
+    ============================================================ -->
+    <section id="stepWelcome" class="funnel-step active" aria-labelledby="welcomeHeading">
+      <div class="container">
+        <div class="welcome-hero">
+          <span class="badge badge-gold" id="welcomeBadge">Free 1-Minute Quiz</span>
+          <h1 id="welcomeHeading" class="headline-main">Find Out Which Healthy Eating Plan Fits Your Life</h1>
+          <p class="subhead-main" id="welcomeSub">
+            Answer 7 quick questions and get your personalized recipe pack, plus a special discount at the end.
+          </p>
+
+          <div class="welcome-book-wrap">
+            <img 
+              src="assets/cover.png" 
+              alt="Healthy Recipes for a Better You - Digital Cookbook Cover" 
+              class="hero-book-img"
+              width="300"
+              height="405"
+              loading="eager"
+            />
+          </div>
+
+          <div class="welcome-cta-wrap">
+            <button id="btnStartQuiz" class="btn btn-gold btn-pulse" style="min-width: 260px;">
+              <span id="startQuizBtnText">Start the Quiz</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <p class="welcome-note" id="welcomeTimeNote">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Takes less than 1 minute
+            </p>
+          </div>
+
+          <div class="welcome-perks">
+            <div class="welcome-perk-item">
+              <svg class="welcome-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <strong>161 Easy Recipes</strong>
+              <span>Tested, wholesome meals for any skill level</span>
+            </div>
+            <div class="welcome-perk-item">
+              <svg class="welcome-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <strong>Personalized Pack</strong>
+              <span>Custom recommendations for your routine</span>
+            </div>
+            <div class="welcome-perk-item">
+              <svg class="welcome-perk-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 8v4l3 3"></path>
+              </svg>
+              <strong>Special Discount</strong>
+              <span>50% off regular price unlocked at completion</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STEP 2: QUIZ SCREEN (7 Questions)
+    ============================================================ -->
+    <section id="stepQuiz" class="funnel-step" aria-labelledby="questionHeading">
+      <div class="container">
+        <div class="quiz-header">
+          <div class="quiz-nav-row">
+            <button id="btnQuizBack" class="btn-secondary" aria-label="Go back to previous question">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+              <span id="btnBackText">Back</span>
+            </button>
+            <div class="quiz-counter" id="quizCounterText">Question 1 of 7</div>
+          </div>
+          <div class="progress-bar-track" role="progressbar" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" aria-label="Quiz progress">
+            <div id="quizProgressFill" class="progress-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <h2 id="questionHeading" class="question-title">What is your main goal right now?</h2>
+          <div id="answersContainer" class="answers-grid" role="radiogroup" aria-labelledby="questionHeading">
+            <!-- Rendered dynamically from COPY object -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STEP 3: ANALYZING SCREEN
+    ============================================================ -->
+    <section id="stepAnalyzing" class="funnel-step" aria-labelledby="analyzingStatus">
+      <div class="container">
+        <div class="analyzing-box">
+          <div class="spinner-ring-wrap" aria-hidden="true">
+            <svg class="ring-svg" viewBox="0 0 120 120">
+              <circle class="ring-bg" cx="60" cy="60" r="55"></circle>
+              <circle id="analyzingRingCircle" class="ring-val" cx="60" cy="60" r="55"></circle>
+            </svg>
+            <div id="analyzingPercentDisplay" class="spinner-percent">0%</div>
+          </div>
+          <h3 id="analyzingStatus" class="analyzing-status-title">Analyzing your answers...</h3>
+          <p class="analyzing-sub" id="analyzingSub">Reviewing your lifestyle, time limits, and dietary preferences.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STEP 4: RESULT + OFFER SALES PAGE (Long Scroll)
+    ============================================================ -->
+    <section id="stepResult" class="funnel-step" aria-labelledby="profileHeading">
+      <div class="container result-container">
+
+        <!-- a) Result Header -->
+        <div class="result-hero-card">
+          <span class="badge badge-sage" id="resBadgeText">Your Tailored Profile</span>
+          <h1 id="profileHeading" class="profile-title">The Energy Seeker</h1>
+          <p id="profileDescription" class="profile-desc">
+            You want sustained vitality throughout your day without energy crashes or complicated routines.
+          </p>
+          <div class="match-bar-container">
+            <span class="match-label" id="resMatchLabel">Lifestyle Match</span>
+            <div class="match-track">
+              <div id="matchScoreFill" class="match-fill"></div>
+            </div>
+            <span id="matchScoreValue" class="match-percentage">96%</span>
+          </div>
+        </div>
+
+        <!-- b) Personalized Chapter Recommendations -->
+        <div class="recommendations-box">
+          <h2 class="section-title" id="recSectionTitle">Start With These 3 Chapters</h2>
+          <p class="section-subtitle" id="recSectionSubtitle">Selected specifically based on your cooking time, meal challenges, and eating preferences:</p>
+          <div id="recCardsContainer" class="rec-cards-list">
+            <!-- Dynamic 3 chapters generated based on scoring & answers -->
+          </div>
+        </div>
+
+        <!-- c) Offer Card (Prominent & Sticky target for scroll) -->
+        <div id="mainOfferCard" class="hero-offer-card">
+          <div class="offer-badge-ribbon" id="offerBadge">Quiz discount unlocked: 50% OFF</div>
+          <div class="offer-grid-layout">
+            <div class="offer-cover-col">
+              <img 
+                src="assets/cover.png" 
+                alt="Healthy Recipes for a Better You" 
+                class="offer-book-img"
+                width="280"
+                height="378"
+                loading="lazy"
+              />
+            </div>
+            <div class="offer-details-col">
+              <h2 class="offer-book-title" id="offerBookTitle">Healthy Recipes for a Better You</h2>
+              <p class="offer-book-tagline" id="offerBookTagline">Simple, Delicious Meals for a Healthier Lifestyle</p>
+
+              <div class="price-box">
+                <div class="price-regular-wrap">
+                  <div class="price-regular-label" id="labelRegPrice">Regular Price</div>
+                  <div class="price-regular" id="displayRegPrice">$20.00</div>
+                </div>
+                <div class="price-divider" aria-hidden="true"></div>
+                <div class="price-special-wrap">
+                  <div class="price-special-label" id="labelQuizPrice">Quiz Special Price</div>
+                  <div class="price-special" id="displaySpecialPrice">$9.99</div>
+                </div>
+              </div>
+
+              <ul class="offer-features-list">
+                <li class="offer-feature-item">
+                  <svg class="feat-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>161 kitchen-tested recipes</strong> across 9 organized chapters</span>
+                </li>
+                <li class="offer-feature-item">
+                  <svg class="feat-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>102 illustrated pages</strong> in convenient PDF format</span>
+                </li>
+                <li class="offer-feature-item">
+                  <svg class="feat-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>Clear prep & cook times, exact quantities, numbered method</span>
+                </li>
+                <li class="offer-feature-item">
+                  <svg class="feat-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Bonus:</strong> Healthy Pantry Guide + Handy Measures Table</span>
+                </li>
+                <li class="offer-feature-item">
+                  <svg class="feat-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span><strong>Clickable Table of Contents</strong> for instant recipe lookup on any screen</span>
+                </li>
+              </ul>
+
+              <div class="cta-container">
+                <a 
+                  id="btnHeroCta" 
+                  href="https://pay.hotmart.com/L108217514F" 
+                  class="btn btn-gold btn-pulse cta-button-full"
+                  target="_self"
+                >
+                  <span id="heroCtaText">Get My Recipe Book for $9.99</span>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </a>
+                <p class="cta-trust-note">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span id="heroTrustNote">Instant digital download • Secure checkout via Hotmart</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- d) "What's Inside" Grid -->
+        <div class="whats-inside-box">
+          <h2 class="section-title" id="insideSectionTitle">What's Inside The Book</h2>
+          <p class="section-subtitle" id="insideSectionSubtitle">Everything you need to eat well consistently, without stress or complicated cooking:</p>
+
+          <div class="specs-grid">
+            <div class="spec-card">
+              <svg class="spec-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+              <div class="spec-card-val">161</div>
+              <div class="spec-card-desc">Delicious, tested recipes</div>
+            </div>
+            <div class="spec-card">
+              <svg class="spec-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="16" rx="2"></rect><line x1="9" y1="4" x2="9" y2="20"></line>
+              </svg>
+              <div class="spec-card-val">9 Chapters</div>
+              <div class="spec-card-desc">Every meal covered</div>
+            </div>
+            <div class="spec-card">
+              <svg class="spec-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <div class="spec-card-val">102 Pages</div>
+              <div class="spec-card-desc">Illustrated digital PDF</div>
+            </div>
+            <div class="spec-card">
+              <svg class="spec-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+              <div class="spec-card-val">Pantry Guide</div>
+              <div class="spec-card-desc">Smart staples checklist</div>
+            </div>
+            <div class="spec-card">
+              <svg class="spec-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+              <div class="spec-card-val">Measures Table</div>
+              <div class="spec-card-desc">Metric & US spoon/cup conversions</div>
+            </div>
+            <div class="spec-card">
+              <svg class="spec-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <div class="spec-card-val">Clickable Index</div>
+              <div class="spec-card-desc">Jump straight to recipes</div>
+            </div>
+          </div>
+
+          <div class="chapters-card">
+            <h3 class="chapters-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              All 9 Comprehensive Chapters Included:
+            </h3>
+            <div class="chapters-pill-grid" id="allChaptersGrid">
+              <!-- Rendered from chapters list -->
+            </div>
+          </div>
+        </div>
+
+        <!-- e) Sample Recipe Preview -->
+        <div class="sample-preview-box">
+          <h2 class="section-title" id="sampleTitle">Sample Recipe Preview</h2>
+          <p class="section-subtitle" id="sampleSubtitle">Each of the 161 recipes is laid out cleanly with times, servings, and numbered steps:</p>
+
+          <div class="recipe-mockup-card">
+            <span class="recipe-tag">From Chapter 5: Poultry & Meat</span>
+            <h3 class="recipe-title">Mediterranean Lemon Herb Chicken & Roasted Vegetables</h3>
+            <div class="recipe-meta-row">
+              <div class="recipe-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Prep: 15 min</span>
+              </div>
+              <div class="recipe-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 10"></polyline></svg>
+                <span>Cook: 25 min</span>
+              </div>
+              <div class="recipe-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <span>4 Servings</span>
+              </div>
+            </div>
+
+            <div class="recipe-columns">
+              <div class="recipe-ing-box">
+                <h5>Ingredients</h5>
+                <ul class="recipe-ing-list">
+                  <li>600g chicken breast, cut into bite-sized cubes</li>
+                  <li>2 tbsp extra virgin olive oil</li>
+                  <li>Juice and zest of 1 unwaxed lemon</li>
+                  <li>2 cloves garlic, finely minced</li>
+                  <li>1 tsp dried oregano & 1 tsp dried thyme</li>
+                  <li>1 medium zucchini, sliced into half-moons</li>
+                  <li>1 bell pepper (any color), deseeded and chopped</li>
+                  <li>1 cup cherry tomatoes</li>
+                  <li>Sea salt and freshly ground black pepper to taste</li>
+                </ul>
+              </div>
+              <div class="recipe-method-box">
+                <h5>Method</h5>
+                <ol class="recipe-steps-list">
+                  <li>
+                    <span class="step-idx">1</span>
+                    <span>Preheat your oven to 200°C (400°F) and line a large baking sheet with parchment paper.</span>
+                  </li>
+                  <li>
+                    <span class="step-idx">2</span>
+                    <span>In a bowl, whisk olive oil, lemon juice, lemon zest, minced garlic, oregano, thyme, salt, and pepper.</span>
+                  </li>
+                  <li>
+                    <span class="step-idx">3</span>
+                    <span>Spread the chopped zucchini, bell pepper, cherry tomatoes, and chicken cubes across the tray in a single layer. Drizzle the herb marinade evenly over everything and toss gently to coat.</span>
+                  </li>
+                  <li>
+                    <span class="step-idx">4</span>
+                    <span>Roast for 22 to 25 minutes until the chicken is cooked through and the vegetables are tender with golden roasted edges. Serve warm with lemon wedges.</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- f) "Why You'll Love It" (4 Benefit Cards) -->
+        <div class="benefits-section">
+          <h2 class="section-title" id="benefitsTitle">Why You'll Love This Cookbook</h2>
+          <p class="section-subtitle" id="benefitsSubtitle">Designed specifically for real homes, busy schedules, and everyday pantries:</p>
+
+          <div class="benefits-grid">
+            <div class="benefit-item-card">
+              <div class="benefit-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div>
+                <h4>Everyday Ingredients</h4>
+                <p>No expensive specialty stores or obscure items. Every recipe uses accessible ingredients found in any standard supermarket.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item-card">
+              <div class="benefit-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h4>Short, Realistic Steps</h4>
+                <p>Minimal washing up, clear instructions, and realistic prep times so cooking never feels like a stressful second job.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item-card">
+              <div class="benefit-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+              </div>
+              <div>
+                <h4>Variety for Every Meal</h4>
+                <p>From energizing breakfasts and workday lunches to family dinners and guilt-free treats, you will never wonder what to cook.</p>
+              </div>
+            </div>
+
+            <div class="benefit-item-card">
+              <div class="benefit-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+              </div>
+              <div>
+                <h4>Incredible Lasting Value</h4>
+                <p>161 tested recipes at $9.99 costs less than a single cafe lunch, giving you a lifetime reference you can return to every week.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- g) Guarantee Block (Configurable: GUARANTEE_ENABLED in JS) -->
+        <div id="guaranteeBlock" class="guarantee-card" style="display: none;">
+          <svg class="guarantee-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <h4>7-Day Money-Back Guarantee</h4>
+          <p>As per Hotmart policy, your purchase is protected by a 7-day refund guarantee for total peace of mind.</p>
+        </div>
+
+        <!-- h) FAQ Accordion (5 Questions) -->
+        <div class="faq-section">
+          <h2 class="section-title" id="faqTitle">Frequently Asked Questions</h2>
+          <p class="section-subtitle" id="faqSubtitle">Clear, direct answers about your purchase:</p>
+
+          <div class="faq-accordion" id="faqAccordionContainer">
+            <!-- 5 Accordion items rendered dynamically from COPY -->
+          </div>
+        </div>
+
+        <!-- i) Final CTA Section -->
+        <div class="final-cta-card">
+          <h3 id="finalCtaHeading">Ready to Make Healthy Eating Simple?</h3>
+          <p id="finalCtaSub">Unlock your 50% quiz discount now and get immediate access to all 161 recipes, guides, and conversions.</p>
+          <div class="final-price-tag" id="finalPriceDisplay">Only $9.99 (Regular $20.00)</div>
+          
+          <a 
+            id="btnFinalCta" 
+            href="https://pay.hotmart.com/L108217514F" 
+            class="btn btn-gold btn-pulse cta-button-full"
+            target="_self"
+          >
+            <span id="finalCtaButtonText">Get My Recipe Book for $9.99</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </a>
+          <p class="cta-trust-note" style="color: #E2ECE0; margin-top: 1rem;">
+            Instant digital PDF download • Secure encrypted payment via Hotmart
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- j) Footer -->
+  <footer class="site-footer">
+    <div class="footer-brand">Healthy Recipes for a Better You</div>
+    <div class="footer-links">
+      <a href="#privacy" onclick="alert('Privacy Policy: We do not sell or share your personal data.'); return false;">Privacy Policy</a>
+      <a href="#terms" onclick="alert('Terms: Single-user digital cookbook license for personal use.'); return false;">Terms of Service</a>
+      <a href="#contact" onclick="alert('Contact: For assistance, please reach out via the support email provided in your purchase receipt.'); return false;">Contact Support</a>
+    </div>
+    <p class="footer-disclaimer" id="footerDisclaimer">
+      This book offers general recipe ideas and is not medical or nutritional advice. Consult a professional for specific health needs.
+    </p>
+    <p class="copyright">&copy; <span id="currentYear"></span> Healthy Recipes for a Better You. All rights reserved.</p>
+  </footer>
+
+  <!-- k) Slim Sticky Bottom CTA Bar on Mobile (Reveals on scroll) -->
+  <div id="stickyBottomBar" class="sticky-bottom-bar" aria-hidden="true">
+    <div class="sticky-price-info">
+      <span class="sticky-label" id="stickyDiscountLabel">50% Quiz Discount</span>
+      <div class="sticky-price-row">
+        <span class="sticky-old-price">$20.00</span>
+        <span class="sticky-new-price">$9.99</span>
+      </div>
+    </div>
+    <a 
+      id="btnStickyCta" 
+      href="https://pay.hotmart.com/L108217514F" 
+      class="btn btn-gold sticky-cta-btn"
+      target="_self"
+    >
+      <span id="stickyCtaText">Claim Book</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </a>
+  </div>
+
+  <!-- ============================================================
+       JAVASCRIPT LOGIC
+       1. Config & i18n Copy Object (Easily switch to Portuguese)
+       2. Scoring Matrix & Profile Logic
+       3. Funnel Flow & sessionStorage Persistence
+       4. Price Animation & Event Tracking
+  ============================================================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ============================================================
+         1. CORE CONFIGURATION
+      ============================================================ */
+      const CONFIG = {
+        baseCheckoutUrl: 'https://pay.hotmart.com/L108217514F',
+        regularPrice: '$20.00',
+        specialPrice: '$9.99',
+        specialPriceNumeric: 9.99,
+        // Configurable guarantee block (Hotmart policy) - false by default as instructed
+        GUARANTEE_ENABLED: false,
+        storageKey: 'healthy_recipes_quiz_data_v1',
+        analyzingDurationMs: 3400
+      };
+
+      /* ============================================================
+         2. EVENT TRACKING HOOK
+         Plugged into GA4, Meta Pixel, and GTM dataLayer
+      ============================================================ */
+      function trackEvent(eventName, eventData = {}) {
+        // Standard Console Log (active by default for verification)
+        console.log(`[Tracking Event: ${eventName}]`, eventData);
+
+        // Google Tag Manager / dataLayer hook
+        if (window.dataLayer && Array.isArray(window.dataLayer)) {
+          window.dataLayer.push({
+            event: eventName,
+            ...eventData
+          });
+        }
+
+        // Google Analytics 4 (gtag) hook
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, eventData);
+        }
+
+        // Meta Pixel (fbq) hook
+        if (typeof window.fbq === 'function') {
+          if (eventName === 'quiz_complete') {
+            window.fbq('trackCustom', 'QuizComplete', eventData);
+          } else if (eventName === 'cta_click') {
+            window.fbq('track', 'InitiateCheckout', {
+              content_name: 'Healthy Recipes for a Better You',
+              value: CONFIG.specialPriceNumeric,
+              currency: 'USD',
+              ...eventData
+            });
+          } else {
+            window.fbq('trackCustom', eventName, eventData);
+          }
+        }
+      }
+
+      /* ============================================================
+         3. I18N COPY OBJECT
+         All copy lives here. Translating to Portuguese is as simple
+         as swapping or adding a COPY.pt dictionary.
+      ============================================================ */
+      const COPY = {
+        en: {
+          brand: "Healthy Recipes",
+          cookbookBadge: "Digital Cookbook",
+          welcome: {
+            badge: "Free 1-Minute Quiz",
+            title: "Find Out Which Healthy Eating Plan Fits Your Life",
+            subtitle: "Answer 7 quick questions and get your personalized recipe pack, plus a special discount at the end.",
+            btnStart: "Start the Quiz",
+            timeNote: "Takes less than 1 minute"
+          },
+          quiz: {
+            back: "Back",
+            counterPrefix: "Question",
+            counterOf: "of",
+            questions: [
+              {
+                id: "q1",
+                title: "What is your main goal right now?",
+                answers: [
+                  { id: "energy", label: "More energy throughout the day", icon: "zap", points: { energy: 4, busy: 1, foodie: 1, family: 0 } },
+                  { id: "health", label: "Eat healthier and feel better every day", icon: "heart", points: { energy: 2, busy: 2, foodie: 2, family: 2 } },
+                  { id: "family", label: "Cook wholesome meals for my family", icon: "users", points: { energy: 0, busy: 1, foodie: 1, family: 5 } },
+                  { id: "tasty", label: "Try new, exciting and tasty recipes", icon: "sparkles", points: { energy: 1, busy: 0, foodie: 5, family: 1 } }
+                ]
+              },
+              {
+                id: "q2",
+                title: "How much time do you usually have to cook?",
+                answers: [
+                  { id: "under15", label: "Under 15 minutes (lightning fast)", icon: "clock", points: { busy: 5, energy: 3, family: 0, foodie: 0 } },
+                  { id: "15to30", label: "15 to 30 minutes (quick & practical)", icon: "clock", points: { busy: 3, energy: 2, family: 2, foodie: 2 } },
+                  { id: "30to60", label: "30 to 60 minutes (comfortable pace)", icon: "clock", points: { busy: 0, energy: 1, family: 3, foodie: 4 } },
+                  { id: "enjoy", label: "I enjoy taking my time cooking", icon: "clock", points: { busy: 0, energy: 1, family: 3, foodie: 5 } }
+                ]
+              },
+              {
+                id: "q3",
+                title: "How would you describe your cooking level?",
+                answers: [
+                  { id: "beginner", label: "Beginner – I need clear, simple guidance", icon: "book", points: { busy: 3, family: 2, energy: 2, foodie: 0 } },
+                  { id: "basics", label: "I know the basics – I can make everyday meals", icon: "check", points: { busy: 2, energy: 2, family: 2, foodie: 2 } },
+                  { id: "confident", label: "Confident cook – I enjoy exploring flavors", icon: "award", points: { foodie: 4, family: 2, energy: 1, busy: 1 } }
+                ]
+              },
+              {
+                id: "q4",
+                title: "Which meal is hardest for you to get right?",
+                answers: [
+                  { id: "breakfast", label: "Breakfast (always in a rush)", icon: "sun", points: { energy: 4, busy: 4, family: 1, foodie: 0 } },
+                  { id: "lunch", label: "Lunch (busy workdays, mid-day slump)", icon: "briefcase", points: { busy: 4, energy: 3, family: 1, foodie: 1 } },
+                  { id: "dinner", label: "Dinner (tired at night, running out of ideas)", icon: "moon", points: { family: 4, busy: 3, energy: 1, foodie: 2 } },
+                  { id: "snacks", label: "Snacks & desserts (temptation and cravings)", icon: "cookie", points: { energy: 3, foodie: 3, busy: 1, family: 2 } }
+                ]
+              },
+              {
+                id: "q5",
+                title: "What kind of food do you prefer?",
+                answers: [
+                  { id: "poultry_meat", label: "Chicken and meat favorites", icon: "drumstick", points: { family: 3, busy: 2, energy: 1, foodie: 2 } },
+                  { id: "fish_seafood", label: "Fish and seafood dishes", icon: "fish", points: { energy: 3, foodie: 3, family: 1, busy: 1 } },
+                  { id: "vegetarian", label: "Vegetarian, beans and legumes", icon: "leaf", points: { energy: 3, foodie: 3, busy: 1, family: 1 } },
+                  { id: "variety", label: "A bit of everything (balanced variety)", icon: "grid", points: { family: 3, foodie: 3, energy: 2, busy: 2 } }
+                ]
+              },
+              {
+                id: "q6",
+                title: "Who do you cook for mostly?",
+                answers: [
+                  { id: "just_me", label: "Just me", icon: "user", points: { busy: 3, energy: 3, foodie: 2, family: 0 } },
+                  { id: "partner", label: "Me and my partner", icon: "users", points: { foodie: 3, energy: 2, busy: 2, family: 1 } },
+                  { id: "whole_family", label: "The whole family (kids & adults)", icon: "home", points: { family: 6, busy: 1, foodie: 1, energy: 0 } },
+                  { id: "meal_prep", label: "Meal prepping for the week ahead", icon: "calendar", points: { busy: 5, energy: 3, family: 1, foodie: 1 } }
+                ]
+              },
+              {
+                id: "q7",
+                title: "What is your biggest daily challenge?",
+                answers: [
+                  { id: "running_out_ideas", label: "Running out of dinner ideas", icon: "help-circle", points: { foodie: 3, family: 3, busy: 2, energy: 1 } },
+                  { id: "lack_of_time", label: "Lack of time to prep and cook", icon: "clock", points: { busy: 5, energy: 2, family: 1, foodie: 0 } },
+                  { id: "healthy_boring", label: "Healthy food feels bland and boring", icon: "smile", points: { foodie: 5, energy: 2, family: 2, busy: 0 } },
+                  { id: "budget", label: "Keeping everyday grocery costs low", icon: "dollar-sign", points: { family: 3, busy: 3, energy: 1, foodie: 1 } }
+                ]
+              }
+            ]
+          },
+          analyzing: {
+            steps: [
+              "Analyzing your answers...",
+              "Matching recipes to your routine...",
+              "Building your personalized pack..."
+            ],
+            sub: "Reviewing your lifestyle, time limits, and dietary preferences."
+          },
+          profiles: {
+            energy: {
+              id: "energy",
+              name: "The Energy Seeker",
+              description: "You thrive on revitalizing, clean meals that keep your energy high and steady from morning to night. You need delicious breakfasts, vibrant smoothies, and nutrient-dense lunches that fight off afternoon slumps.",
+              baseMatch: 95,
+              recommendedChapters: [
+                { title: "Juices & Smoothies", reason: "Quick, natural hydration and nutrient boosts to power through your mornings." },
+                { title: "Salads & Bowls", reason: "Crisp, energizing lunchtime meals designed to keep you focused with zero sluggishness." },
+                { title: "Breakfasts", reason: "Balanced, protein-rich morning recipes that stabilize your blood sugar for the day." }
+              ]
+            },
+            busy: {
+              id: "busy",
+              name: "The Busy Achiever",
+              description: "Your days are intensely scheduled, and cooking cannot become another exhausting project. You need lightning-fast 15-to-30 minute meals, smart pantry staples, and effortless cleanup.",
+              baseMatch: 96,
+              recommendedChapters: [
+                { title: "Breakfasts", reason: "Speedy 10-minute breakfasts and make-ahead ideas for hectic workdays." },
+                { title: "Sides & Sauces", reason: "Quick flavor boosters and one-pan sides that cut weeknight prep time in half." },
+                { title: "Soups & Broths", reason: "Soothing, one-pot meals you can prepare quickly or store for effortless reheats." }
+              ]
+            },
+            family: {
+              id: "family",
+              name: "The Family Chef",
+              description: "You cook with love for the people who matter most. You need wholesome, crowd-pleasing meals with everyday ingredients that both kids and adults look forward to sitting down to eat.",
+              baseMatch: 97,
+              recommendedChapters: [
+                { title: "Poultry & Meat", reason: "Satisfying, tender mains with comforting flavors everyone at the table will love." },
+                { title: "Fish & Seafood", reason: "Foolproof, mild, and delicious seafood dishes to bring variety to family nights." },
+                { title: "Snacks & Sweet Treats", reason: "Wholesome, naturally sweetened snacks you can feel great about serving your family." }
+              ]
+            },
+            foodie: {
+              id: "foodie",
+              name: "The Curious Foodie",
+              description: "You believe healthy food should never taste dull or repetitive. You love vibrant spices, fresh herbs, colorful bowls, and creative culinary touches that make every meal feel like a treat.",
+              baseMatch: 94,
+              recommendedChapters: [
+                { title: "Salads & Bowls", reason: "Layered textures, bold dressings, and artfully assembled wholesome bowls." },
+                { title: "Vegetarian & Legumes", reason: "Rich spices, hearty pulses, and inventive global plant-forward recipes." },
+                { title: "Fish & Seafood", reason: "Fresh citrus, fragrant herbs, and restaurant-style light cooking techniques." }
+              ]
+            }
+          },
+          allChapters: [
+            "Breakfasts",
+            "Juices & Smoothies",
+            "Salads & Bowls",
+            "Soups & Broths",
+            "Poultry & Meat",
+            "Fish & Seafood",
+            "Vegetarian & Legumes",
+            "Sides & Sauces",
+            "Snacks & Sweet Treats"
+          ],
+          faqs: [
+            {
+              q: "What format is the cookbook delivered in?",
+              a: "The cookbook is delivered as a universal, high-resolution digital PDF (102 pages). You can open it on any smartphone, iPad, tablet, Kindle device that supports PDFs, laptop, or desktop computer. You can also print out any recipe sheet whenever you like."
+            },
+            {
+              q: "How and when do I receive my book?",
+              a: "Access is 100% instant. Right after completing your secure checkout through Hotmart, you will receive an immediate confirmation email with your direct download link. You can start reading and cooking within 2 minutes."
+            },
+            {
+              q: "Which devices can I read this on?",
+              a: "Any device with a PDF reader or web browser! That includes Apple iPhones, iPads, Android phones and tablets, Macs, Windows PCs, and e-readers. The PDF includes a clickable table of contents so you can jump to any recipe in one tap."
+            },
+            {
+              q: "What if the recipes do not suit my tastes?",
+              a: "We want you to love cooking with this book. Hotmart provides a standard 7-day refund guarantee on purchases. If the recipes don't match your routine or taste, you can easily request a full refund within 7 days via Hotmart's platform."
+            },
+            {
+              q: "Do these recipes require expensive or hard-to-find ingredients?",
+              a: "Not at all. The core philosophy of this book is wholesome everyday eating. All ingredients can be found in your local neighborhood supermarket. We also included a Healthy Pantry Essentials guide to show you how to stock up on smart staples economically."
+            }
+          ]
+        }
+      };
+
+      const copy = COPY.en;
+
+      /* ============================================================
+         4. SVG ICON HELPER (Clean, lightweight inline vectors)
+      ============================================================ */
+      function getSvgIcon(iconName) {
+        const icons = {
+          zap: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>',
+          heart: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>',
+          users: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>',
+          sparkles: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>',
+          clock: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>',
+          book: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+          check: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>',
+          award: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>',
+          sun: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>',
+          briefcase: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>',
+          moon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+          cookie: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 8 4"></path><circle cx="8.5" cy="8.5" r="1"></circle><circle cx="16" cy="11" r="1"></circle><circle cx="10" cy="15" r="1"></circle><circle cx="14.5" cy="16.5" r="1"></circle></svg>',
+          drumstick: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15.4 15.63 3.63-3.62a4.5 4.5 0 0 0-6.36-6.37l-3.63 3.63a6 6 0 0 0-.58 7.78l-4.5 4.5a2 2 0 0 0 2.83 2.83l4.5-4.5a6 6 0 0 0 7.78-.58z"></path></svg>',
+          fish: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.46-3.44 6-7 6s-7.56-2.54-8.5-6Z"></path><path d="M18 12v.5"></path><path d="M16 17.93a10.07 10.07 0 0 1-4.5 1.07A10 10 0 0 1 2 9.5a10 10 0 0 1 9.5-9.5c1.6 0 3.12.38 4.5 1.07"></path><path d="m2 2 20 20"></path></svg>',
+          leaf: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>',
+          grid: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>',
+          user: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>',
+          home: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
+          calendar: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>',
+          'help-circle': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>',
+          smile: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>',
+          'dollar-sign': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>'
+        };
+
+        return icons[iconName] || '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+      }
+
+      /* ============================================================
+         5. STATE MANAGEMENT & SESSION STORAGE PERSISTENCE
+      ============================================================ */
+      const state = {
+        currentStep: 'welcome', // 'welcome' | 'quiz' | 'analyzing' | 'result'
+        currentQuestionIndex: 0,
+        userAnswers: {}, // e.g. { q1: 'energy', q2: 'under15', ... }
+        profileScores: { energy: 0, busy: 0, family: 0, foodie: 0 },
+        winningProfile: 'energy',
+        calculatedMatchScore: 95,
+        isAutoAdvancing: false
+      };
+
+      function saveState() {
+        try {
+          sessionStorage.setItem(CONFIG.storageKey, JSON.stringify({
+            currentStep: state.currentStep,
+            currentQuestionIndex: state.currentQuestionIndex,
+            userAnswers: state.userAnswers,
+            profileScores: state.profileScores,
+            winningProfile: state.winningProfile,
+            calculatedMatchScore: state.calculatedMatchScore
+          }));
+        } catch (e) {
+          console.warn('Could not save to sessionStorage:', e);
+        }
+      }
+
+      function loadState() {
+        try {
+          const raw = sessionStorage.getItem(CONFIG.storageKey);
+          if (!raw) return false;
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.currentStep) {
+            Object.assign(state, parsed);
+            return true;
+          }
+        } catch (e) {
+          console.warn('Could not restore from sessionStorage:', e);
+        }
+        return false;
+      }
+
+      /* ============================================================
+         6. DOM ELEMENTS
+      ============================================================ */
+      const el = {
+        srAnnouncer: document.getElementById('srAnnouncer'),
+        stepWelcome: document.getElementById('stepWelcome'),
+        stepQuiz: document.getElementById('stepQuiz'),
+        stepAnalyzing: document.getElementById('stepAnalyzing'),
+        stepResult: document.getElementById('stepResult'),
+
+        btnStartQuiz: document.getElementById('btnStartQuiz'),
+        btnQuizBack: document.getElementById('btnQuizBack'),
+        quizCounterText: document.getElementById('quizCounterText'),
+        quizProgressFill: document.getElementById('quizProgressFill'),
+        questionHeading: document.getElementById('questionHeading'),
+        answersContainer: document.getElementById('answersContainer'),
+
+        analyzingRingCircle: document.getElementById('analyzingRingCircle'),
+        analyzingPercentDisplay: document.getElementById('analyzingPercentDisplay'),
+        analyzingStatus: document.getElementById('analyzingStatus'),
+
+        profileHeading: document.getElementById('profileHeading'),
+        profileDescription: document.getElementById('profileDescription'),
+        matchScoreFill: document.getElementById('matchScoreFill'),
+        matchScoreValue: document.getElementById('matchScoreValue'),
+        recCardsContainer: document.getElementById('recCardsContainer'),
+        allChaptersGrid: document.getElementById('allChaptersGrid'),
+        guaranteeBlock: document.getElementById('guaranteeBlock'),
+        faqAccordionContainer: document.getElementById('faqAccordionContainer'),
+
+        btnHeroCta: document.getElementById('btnHeroCta'),
+        btnFinalCta: document.getElementById('btnFinalCta'),
+        btnStickyCta: document.getElementById('btnStickyCta'),
+        mainOfferCard: document.getElementById('mainOfferCard'),
+        stickyBottomBar: document.getElementById('stickyBottomBar'),
+        currentYear: document.getElementById('currentYear'),
+        displaySpecialPrice: document.getElementById('displaySpecialPrice')
+      };
+
+      if (el.currentYear) {
+        el.currentYear.textContent = new Date().getFullYear();
+      }
+
+      /* Guarantee block visibility governed by configurable constant */
+      if (el.guaranteeBlock) {
+        el.guaranteeBlock.style.display = CONFIG.GUARANTEE_ENABLED ? 'block' : 'none';
+      }
+
+      /* ============================================================
+         7. FUNNEL NAVIGATION & STEP TRANSITIONS
+      ============================================================ */
+      function announce(message) {
+        if (el.srAnnouncer) {
+          el.srAnnouncer.textContent = message;
+        }
+      }
+
+      function showStep(stepName) {
+        state.currentStep = stepName;
+        saveState();
+
+        const steps = [el.stepWelcome, el.stepQuiz, el.stepAnalyzing, el.stepResult];
+        steps.forEach(step => {
+          if (!step) return;
+          step.classList.remove('active');
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => {
+          if (stepName === 'welcome' && el.stepWelcome) {
+            el.stepWelcome.classList.add('active');
+            announce("Welcome to the Healthy Recipes quiz.");
+          } else if (stepName === 'quiz' && el.stepQuiz) {
+            el.stepQuiz.classList.add('active');
+            renderQuestion(state.currentQuestionIndex);
+          } else if (stepName === 'analyzing' && el.stepAnalyzing) {
+            el.stepAnalyzing.classList.add('active');
+            startAnalyzingSequence();
+          } else if (stepName === 'result' && el.stepResult) {
+            el.stepResult.classList.add('active');
+            renderResultPage();
+          }
+        }, 120);
+      }
+
+      /* ============================================================
+         8. QUIZ RENDERING & INTERACTION
+      ============================================================ */
+      function renderQuestion(index) {
+        state.currentQuestionIndex = index;
+        saveState();
+
+        const q = copy.quiz.questions[index];
+        const total = copy.quiz.questions.length;
+        const progressPercent = Math.round(((index + 1) / total) * 100);
+
+        // Update progress & labels
+        if (el.quizCounterText) {
+          el.quizCounterText.textContent = `${copy.quiz.counterPrefix} ${index + 1} ${copy.quiz.counterOf} ${total}`;
+        }
+        if (el.quizProgressFill) {
+          el.quizProgressFill.style.width = `${progressPercent}%`;
+          el.quizProgressFill.parentElement.setAttribute('aria-valuenow', progressPercent);
+        }
+        if (el.questionHeading) {
+          el.questionHeading.textContent = q.title;
+        }
+
+        announce(`Question ${index + 1} of ${total}: ${q.title}`);
+
+        // Populate answers
+        if (el.answersContainer) {
+          el.answersContainer.innerHTML = '';
+
+          q.answers.forEach((ans, ansIdx) => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'answer-card';
+            btn.setAttribute('role', 'radio');
+            btn.setAttribute('aria-checked', state.userAnswers[q.id] === ans.id ? 'true' : 'false');
+            btn.dataset.answerId = ans.id;
+            btn.tabIndex = 0;
+
+            if (state.userAnswers[q.id] === ans.id) {
+              btn.classList.add('selected');
+            }
+
+            btn.innerHTML = `
+              <div class="answer-icon-box" aria-hidden="true">
+                ${getSvgIcon(ans.icon)}
+              </div>
+              <div class="answer-text-wrap">
+                <span class="answer-label">${ans.label}</span>
+              </div>
+              <div class="answer-check" aria-hidden="true">
+                <svg class="answer-check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+            `;
+
+            // Click handler
+            btn.addEventListener('click', () => {
+              handleAnswerSelection(q.id, ans.id, btn);
+            });
+
+            // Keyboard navigation (Enter / Space)
+            btn.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleAnswerSelection(q.id, ans.id, btn);
+              }
+            });
+
+            el.answersContainer.appendChild(btn);
+          });
+        }
+      }
+
+      function handleAnswerSelection(questionId, answerId, cardElement) {
+        if (state.isAutoAdvancing) return;
+
+        // Visual selection update
+        const allCards = el.answersContainer.querySelectorAll('.answer-card');
+        allCards.forEach(c => {
+          c.classList.remove('selected');
+          c.setAttribute('aria-checked', 'false');
+        });
+        cardElement.classList.add('selected');
+        cardElement.setAttribute('aria-checked', 'true');
+
+        // Record answer
+        state.userAnswers[questionId] = answerId;
+        saveState();
+
+        trackEvent('question_answered', {
+          question_index: state.currentQuestionIndex + 1,
+          question_id: questionId,
+          answer_id: answerId
+        });
+
+        // 350ms smooth auto-advance delay
+        state.isAutoAdvancing = true;
+        setTimeout(() => {
+          state.isAutoAdvancing = false;
+          const nextIndex = state.currentQuestionIndex + 1;
+          if (nextIndex < copy.quiz.questions.length) {
+            renderQuestion(nextIndex);
+          } else {
+            // Quiz completed -> Compute scores and launch analyzing screen
+            computeQuizResults();
+            showStep('analyzing');
+          }
+        }, 350);
+      }
+
+      /* Back Button Logic */
+      if (el.btnQuizBack) {
+        el.btnQuizBack.addEventListener('click', () => {
+          if (state.currentQuestionIndex > 0) {
+            renderQuestion(state.currentQuestionIndex - 1);
+          } else {
+            showStep('welcome');
+          }
+        });
+      }
+
+      /* Start Button Logic */
+      if (el.btnStartQuiz) {
+        el.btnStartQuiz.addEventListener('click', () => {
+          trackEvent('quiz_start');
+          showStep('quiz');
+        });
+      }
+
+      /* ============================================================
+         9. SCORING MATRIX & WINNING PROFILE COMPUTATION
+      ============================================================ */
+      function computeQuizResults() {
+        const scores = { energy: 0, busy: 0, family: 0, foodie: 0 };
+
+        // Real scoring: iterate over each answered question
+        copy.quiz.questions.forEach(q => {
+          const chosenAnswerId = state.userAnswers[q.id];
+          if (!chosenAnswerId) return;
+
+          const chosenAnswer = q.answers.find(a => a.id === chosenAnswerId);
+          if (chosenAnswer && chosenAnswer.points) {
+            for (const profile in chosenAnswer.points) {
+              if (scores[profile] !== undefined) {
+                scores[profile] += chosenAnswer.points[profile];
+              }
+            }
+          }
+        });
+
+        state.profileScores = scores;
+
+        // Determine highest score
+        let maxPoints = -1;
+        let winners = [];
+        for (const profile in scores) {
+          if (scores[profile] > maxPoints) {
+            maxPoints = scores[profile];
+            winners = [profile];
+          } else if (scores[profile] === maxPoints) {
+            winners.push(profile);
+          }
+        }
+
+        // Real Tie-break Logic: Tied to Q1 preference
+        let finalProfile = winners[0];
+        if (winners.length > 1) {
+          const q1Ans = state.userAnswers['q1'];
+          const q1TieMap = {
+            energy: 'energy',
+            health: 'busy',
+            family: 'family',
+            tasty: 'foodie'
+          };
+          const tiedPreference = q1TieMap[q1Ans];
+          if (winners.includes(tiedPreference)) {
+            finalProfile = tiedPreference;
+          } else {
+            finalProfile = winners[0];
+          }
+        }
+
+        state.winningProfile = finalProfile;
+
+        // Calculate a genuine match score between 92% and 97% based on score dominance
+        const totalPointsScored = Object.values(scores).reduce((a, b) => a + b, 0);
+        const dominanceRatio = totalPointsScored > 0 ? (maxPoints / totalPointsScored) : 0.4;
+        const computedScore = Math.min(97, Math.max(92, Math.round(89 + (dominanceRatio * 18))));
+        state.calculatedMatchScore = computedScore;
+
+        saveState();
+
+        trackEvent('quiz_complete', {
+          winning_profile: finalProfile,
+          match_score: computedScore,
+          scores: scores
+        });
+      }
+
+      /* ============================================================
+         10. ANALYZING SCREEN ANIMATION
+      ============================================================ */
+      function startAnalyzingSequence() {
+        const totalDuration = CONFIG.analyzingDurationMs;
+        const circle = el.analyzingRingCircle;
+        const percentText = el.analyzingPercentDisplay;
+        const statusText = el.analyzingStatus;
+
+        // Animate circular stroke
+        if (circle) {
+          circle.style.strokeDashoffset = '345.5';
+          // Trigger browser reflow
+          void circle.offsetWidth;
+          circle.style.strokeDashoffset = '0';
+        }
+
+        const startTime = Date.now();
+        const interval = setInterval(() => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(1, elapsed / totalDuration);
+          const currentPercent = Math.round(progress * 100);
+
+          if (percentText) {
+            percentText.textContent = `${currentPercent}%`;
+          }
+
+          // Rotating status messages
+          if (statusText) {
+            if (progress < 0.35) {
+              statusText.textContent = copy.analyzing.steps[0];
+            } else if (progress < 0.72) {
+              statusText.textContent = copy.analyzing.steps[1];
+            } else {
+              statusText.textContent = copy.analyzing.steps[2];
+            }
+          }
+
+          if (progress >= 1) {
+            clearInterval(interval);
+            setTimeout(() => {
+              showStep('result');
+            }, 300);
+          }
+        }, 40);
+      }
+
+      /* ============================================================
+         11. RESULT PAGE RENDERING & RECOMMENDATIONS
+      ============================================================ */
+      function renderResultPage() {
+        const profile = copy.profiles[state.winningProfile] || copy.profiles.energy;
+        const matchScore = state.calculatedMatchScore || profile.baseMatch;
+
+        // a) Result Header
+        if (el.profileHeading) {
+          el.profileHeading.textContent = profile.name;
+        }
+        if (el.profileDescription) {
+          el.profileDescription.textContent = profile.description;
+        }
+        if (el.matchScoreValue) {
+          el.matchScoreValue.textContent = `${matchScore}%`;
+        }
+        if (el.matchScoreFill) {
+          setTimeout(() => {
+            el.matchScoreFill.style.width = `${matchScore}%`;
+          }, 200);
+        }
+
+        // b) Personalized Chapter Recommendations
+        if (el.recCardsContainer) {
+          el.recCardsContainer.innerHTML = '';
+          profile.recommendedChapters.forEach((rec, idx) => {
+            const card = document.createElement('div');
+            card.className = 'rec-card';
+            card.innerHTML = `
+              <div class="rec-card-num" aria-hidden="true">${idx + 1}</div>
+              <div class="rec-card-content">
+                <h4>Chapter: ${rec.title}</h4>
+                <p>${rec.reason}</p>
+              </div>
+            `;
+            el.recCardsContainer.appendChild(card);
+          });
+        }
+
+        // All 9 chapters grid
+        if (el.allChaptersGrid) {
+          el.allChaptersGrid.innerHTML = '';
+          copy.allChapters.forEach(ch => {
+            const pill = document.createElement('div');
+            pill.className = 'chapter-pill';
+            pill.innerHTML = `
+              <span class="chapter-pill-dot" aria-hidden="true"></span>
+              <span>${ch}</span>
+            `;
+            el.allChaptersGrid.appendChild(pill);
+          });
+        }
+
+        // FAQ Accordion
+        if (el.faqAccordionContainer) {
+          el.faqAccordionContainer.innerHTML = '';
+          copy.faqs.forEach((faq, idx) => {
+            const item = document.createElement('div');
+            item.className = 'faq-item' + (idx === 0 ? ' open' : '');
+            item.innerHTML = `
+              <button type="button" class="faq-question-btn" aria-expanded="${idx === 0 ? 'true' : 'false'}">
+                <span>${faq.q}</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="faq-answer-panel" role="region">
+                <p>${faq.a}</p>
+              </div>
+            `;
+
+            const btn = item.querySelector('.faq-question-btn');
+            btn.addEventListener('click', () => {
+              const isOpen = item.classList.contains('open');
+              // Close all
+              el.faqAccordionContainer.querySelectorAll('.faq-item').forEach(f => {
+                f.classList.remove('open');
+                f.querySelector('.faq-question-btn').setAttribute('aria-expanded', 'false');
+              });
+              if (!isOpen) {
+                item.classList.add('open');
+                btn.setAttribute('aria-expanded', 'true');
+              }
+            });
+
+            el.faqAccordionContainer.appendChild(item);
+          });
+        }
+
+        // Setup CTA URLs with profile parameter: ?src=profile_<id>
+        setupCheckoutUrls();
+
+        // Count up price animation on result load
+        animatePriceCountUp();
+
+        // Setup scroll observer for mobile sticky bar
+        setupScrollObserver();
+      }
+
+      /* ============================================================
+         12. CHECKOUT URL & ATTRIBUTION QUERY PARAMETER
+      ============================================================ */
+      function setupCheckoutUrls() {
+        const profileId = state.winningProfile || 'energy';
+        const finalUrl = `${CONFIG.baseCheckoutUrl}?src=profile_${encodeURIComponent(profileId)}`;
+
+        const ctaButtons = [
+          { element: el.btnHeroCta, location: 'hero_offer' },
+          { element: el.btnFinalCta, location: 'final_cta' },
+          { element: el.btnStickyCta, location: 'sticky_bar' }
+        ];
+
+        ctaButtons.forEach(item => {
+          if (!item.element) return;
+          item.element.href = finalUrl;
+          item.element.target = '_self'; // Open in same tab as required
+
+          // Track CTA clicks
+          item.element.addEventListener('click', (e) => {
+            trackEvent('cta_click', {
+              location: item.location,
+              profile: profileId,
+              url: finalUrl
+            });
+          });
+        });
+      }
+
+      /* ============================================================
+         13. PRICE COUNT-UP ANIMATION
+      ============================================================ */
+      function animatePriceCountUp() {
+        if (!el.displaySpecialPrice) return;
+        const target = CONFIG.specialPriceNumeric;
+        const duration = 1000;
+        const startTime = Date.now();
+
+        const countInterval = setInterval(() => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(1, elapsed / duration);
+          const current = (progress * target).toFixed(2);
+          el.displaySpecialPrice.textContent = `$${current}`;
+
+          if (progress >= 1) {
+            clearInterval(countInterval);
+            el.displaySpecialPrice.textContent = CONFIG.specialPrice;
+          }
+        }, 30);
+      }
+
+      /* ============================================================
+         14. MOBILE STICKY CTA BAR (Scroll Observer)
+      ============================================================ */
+      function setupScrollObserver() {
+        if (!el.stickyBottomBar || !el.mainOfferCard) return;
+
+        function updateStickyVisibility() {
+          if (window.innerWidth >= 680) {
+            el.stickyBottomBar.classList.remove('visible');
+            el.stickyBottomBar.setAttribute('aria-hidden', 'true');
+            return;
+          }
+          const rect = el.mainOfferCard.getBoundingClientRect();
+          // Show once user has scrolled past the top of the main offer card
+          if (rect.bottom < 0 || rect.top < 0) {
+            el.stickyBottomBar.classList.add('visible');
+            el.stickyBottomBar.setAttribute('aria-hidden', 'false');
+          } else {
+            el.stickyBottomBar.classList.remove('visible');
+            el.stickyBottomBar.setAttribute('aria-hidden', 'true');
+          }
+        }
+
+        window.addEventListener('scroll', updateStickyVisibility, { passive: true });
+        window.addEventListener('resize', updateStickyVisibility, { passive: true });
+
+        if ('IntersectionObserver' in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (window.innerWidth >= 680) return;
+              if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+                el.stickyBottomBar.classList.add('visible');
+                el.stickyBottomBar.setAttribute('aria-hidden', 'false');
+              } else if (entry.isIntersecting) {
+                el.stickyBottomBar.classList.remove('visible');
+                el.stickyBottomBar.setAttribute('aria-hidden', 'true');
+              }
+            });
+          }, {
+            threshold: 0
+          });
+
+          observer.observe(el.mainOfferCard);
+        }
+
+        // Initial check
+        updateStickyVisibility();
+      }
+
+      /* ============================================================
+         15. INITIALIZATION & SESSION RESTORE
+      ============================================================ */
+      function init() {
+        const hasSaved = loadState();
+        if (hasSaved && state.currentStep && state.currentStep !== 'welcome') {
+          showStep(state.currentStep);
+        } else {
+          showStep('welcome');
+        }
+      }
+
+      // Run on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+
+    })();
+  </script>
+</body>
+</html>

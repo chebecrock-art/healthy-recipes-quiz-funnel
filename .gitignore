@@ -1,0 +1,12 @@
+# Testing and tools
+screenshot-*.png
+test_funnel.ps1
+generate_cover.ps1
+server.ps1
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
